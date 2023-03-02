@@ -22,8 +22,8 @@ export const showUsersById = (req,res)=>{
 }
 
 export const createUsers = (req,res)=>{
-    const dados = req.body
-    insertUsers(dados, (erro,results)=>{
+    const data = req.body
+    insertUsers(data, (erro,results)=>{
         if(erro){
             res.send(erro)
         }else{

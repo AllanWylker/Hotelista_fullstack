@@ -8,7 +8,7 @@
         <input
           name="nome"
           id="nome"
-          v-model="nome"
+          v-model="nomeUsuario"
           placeholder="Seu nome"
           type="text"
           required
@@ -18,7 +18,7 @@
         <input
           name="email"
           id="email"
-          v-model="email"
+          v-model="emailUsuario"
           placeholder="Qual é o seu email"
           type="text"
           required
@@ -28,7 +28,7 @@
         <input
           name="telefone"
           id="telefone"
-          v-model="telefone"
+          v-model="telefoneUsuario"
           placeholder="Qual é o seu telefone"
           type="text"
           required
@@ -38,7 +38,7 @@
         <input
           name="nascimento"
           id="nascimento"
-          v-model="data_nascimento"
+          v-model="data_nascimentoUsuario"
           placeholder="Qual é a data de nascimento"
           type="text"
           required
@@ -50,42 +50,46 @@
         <input
           name="nacionalidade"
           id="nacionalidade"
-          v-model="nacionalidade"
+          v-model="nacionalidadeUsuario"
           placeholder="Qual é a sua nacionalidade"
           type="text"
           required
         />
 
         <label for="genero">Gênero:</label>
-        <select name="genero" id="genero" v-model="genero" required>
-          <option value="genero1">Selecione seu gênero</option>
-          <option value="genero2">Homem</option>
-          <option value="genero3">Mulher</option>
-          <option value="genero4">Pessoa não-binária</option>
-          <option value="genero5">Prefiro não informar</option>
+        <select name="genero" id="genero" v-model="generoUsuario" required>
+          <option value="Homem">Homem</option>
+          <option value="Mulher">Mulher</option>
+          <option value="Pessoa não-binária">Pessoa não-binária</option>
+          <option value="Prefiro não informar">Prefiro não informar</option>
         </select>
 
         <label id="endereço" for="endereço">Endereço:</label>
         <input
           name="endereço"
           id="endereço"
-          v-model="endereco"
+          v-model="enderecoUsuario"
           placeholder="Qual é a sua endereço"
           type="text"
           required
         />
 
         <label for="notificação">Notificações por email:</label>
-        <select name="notificação" id="notificação" required>
-          <option value="notificação1">Sim</option>
-          <option value="notificação2">Não</option>
+        <select
+          name="notificação"
+          id="notificação"
+          v-model="notificacaoUsuario"
+          required
+        >
+          <option value="Sim">Sim</option>
+          <option value="Não">Não</option>
         </select>
-        
+
         <label id="senhaLabel" for="senha">Senha:</label>
         <input
           name="senha"
           id="senha"
-          v-model="senha"
+          v-model="senhaUsuario"
           placeholder="Seu nome"
           type="password"
           required
@@ -108,41 +112,51 @@ export default {
   name: "CadastroView",
   data() {
     return {
-      nome:'',
-      email:'',
-      telefone:'',
-      data_nascimento:'',
-      nacionalidade:'',
-      genero:'',
-      endereco:'',
-      senha:''
+      nomeUsuario:"",
+      emailUsuario:"",
+      telefoneUsuario:"",
+      data_nascimentoUsuario:"",
+      nacionalidadeUsuario:"",
+      generoUsuario:"",
+      enderecoUsuario:"",
+      notificacaoUsuario:"",
+      senhaUsuario:""
     };
   },
-  method: {
+  methods: {
     async postUsuario(){
-      axios.post("http://localhost:5000/usuario", {
-        nome: this.nome,
-        email: this.email,
-        senha: this.senha,
-        telefone: this.telefone,
-        data_nascimento: this.data_nascimento,
-        nacionalidade: this.nacionalidade,
-        genero: this.genero,
-        endereco: this.endereco
-      })
-      .then((res) => {
-        this.nome='',
-        this.email='',
-        this.telefone='',
-        this.data_nascimento='',
-        this.nacionalidade='',
-        this.genero='',
-        this.endereco='',
-        this.senha=''
-      res.send(alert('Usuário cadastrado com sucesso!'))
-      router.push('/')
-    });
-    }
+      try {
+        await axios.post("http://localhost:5000/usuario", 
+        {
+          nome: this.nomeUsuario,
+          email: this.emailUsuario,
+          senha: this.senhaUsuario,
+          telefone: this.telefoneUsuario,
+          genero: this.generoUsuario,
+          endereco: this.enderecoUsuario,
+          data_nascimento: this.data_nascimentoUsuario,
+          nacionalidade:this.nacionalidadeUsuario,
+          notificacaoUsuario: this.notificacao,
+       
+        })
+        this.nomeUsuario = "",
+        this.emailUsuario = "",
+        (this.senhaUsuario = ""),
+        (this.telefoneUsuario = ""),
+        (this.generoUsuario = ""),
+        (this.enderecoUsuario = ""),
+        (this.data_nascimentoUsuario=""),
+        (this.nacionalidadeUsuario=""),
+        (this.notificacaoUsuario=""),
+    
+        alert('Usuário cadastrado com sucesso!')
+        this.$router.push("/");
+      }
+       catch (err) {
+        console.log(err);
+      
+      }
+    } 
   } 
 };
 </script>

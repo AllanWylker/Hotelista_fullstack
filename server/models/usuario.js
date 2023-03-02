@@ -27,13 +27,15 @@ export const usersById = (id,result) => {
 }
 
 //insere usuario
-export const insertUsers = (dados, result)=>{
-    console.log("insertUsers", dados);
-    const values = [dados.nome, dados.role, dados.email, dados.ativo, dados.senha, dados.dataCreated, dados.telefone, 
-    dados.data_nascimento, dados.nacionalidade, dados.genero, dados.endereco]
+export const insertUsers = (data, result)=>{
     conn.query(
-        "INSERT INTO Usuario (nome,role,email,ativo,senha,dataCreated,telefone,data_nascimento,nacionalidade,genero,endereco) VALUES (?,?,?,?,?,?,?,?,?,?,?)"
-        ,values, (erro,results)=>{
+        "INSERT INTO `Usuario` SET `nome`=?, `email`=?, `senha`=?, `telefone`=?, `data_nascimento`=?, `nacionalidade`=?, `genero`=?, `endereco`=?"
+        ,[
+            data.nome, data.email, data.senha, data.telefone, 
+            data.data_nascimento, data.nacionalidade, data.genero, 
+            data.endereco
+        ], 
+        (erro,results)=>{
         if (erro){
             console.log(erro)
             result(erro,null)
