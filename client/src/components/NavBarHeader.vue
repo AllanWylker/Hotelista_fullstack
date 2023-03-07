@@ -1,67 +1,61 @@
 <template>
-<html>
-  <head>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <header>
-    <nav v-if="!$route.meta.hideNavigation">
-      <div class="navbar">
-        <div class="navbar-wrap">
-          <a class="navbar-logo">
-			<router-link to="/"><img
-              class="navbar-logo"
-              src="@/assets/logotipo/Hotelista_sem_fundo.png"
-              alt="Logotipo Hotelista - Página home"
-            /></router-link>
-            
-          </a>
-          <div class="navbar-menu-wrap">
-            <div class="navbar-menu">
-              <a class="navbar-link active"
-                ><router-link to="/">Home</router-link></a
-              >
-              <a class="navbar-link"
-                ><router-link to="/reservas">Reserve já</router-link></a
-              >
-              <a class="navbar-link"><router-link to="/acomodacoes">Nossas Acomodações</router-link></a
-			  >               
-              <a class="navbar-link"><router-link to="/contato">Contato</router-link></a
-              >
-              <a class="navbar-link"><router-link to="/sobre">Sobre</router-link></a
-              >
-              <i class="navbar-dropdown-wrap">
-                <p class="navbar-dropdown-button">&#xe853;</p>
-                <div class="navbar-dropdown">
-                  <p class="navbar-user">Olá, usuário!</p>
-                  <a class="navbar-link"><router-link to="/login">Login</router-link></a>
-                </div>
-              </i>
+	<html>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <router-view/>
-  </header>
-</html>
+	<head>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	</head>
+	<header>
+		<nav v-if="!$route.meta.hideNavigation">
+			<div class="navbar">
+				<div class="navbar-wrap">
+					<a class="navbar-logo">
+						<router-link to="/"><img class="navbar-logo" src="@/assets/logotipo/Hotelista_sem_fundo.png"
+								alt="Logotipo Hotelista - Página home" /></router-link>
+
+					</a>
+					<div class="navbar-menu-wrap">
+						<div class="navbar-menu">
+							<a class="navbar-link active"><router-link to="/">Home</router-link></a>
+							<a class="navbar-link"><router-link to="/reservas">Reserve já</router-link></a>
+							<a class="navbar-link"><router-link to="/acomodacoes">Nossas Acomodações</router-link></a>
+							<a class="navbar-link"><router-link to="/contato">Contato</router-link></a>
+							<a class="navbar-link"><router-link to="/sobre">Sobre</router-link></a>
+							<i class="navbar-dropdown-wrap">
+								<p class="navbar-dropdown-button">&#xe853;</p>
+								<div class="navbar-dropdown">
+									<p class="navbar-user">Olá, {{ usuario != null ? usuario : "usuário" }}!</p>
+									<a class="navbar-link">
+										<router-link to="/login" :class="{ hidden: isLoggedIn }">Login</router-link>
+									</a>
+								</div>
+							</i>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<router-view />
+	</header>
+
+	</html>
 </template>
 
 <script>
 export default {
-  name: "NavBarHeader",
+	name: "NavBarHeader",
+	data: function () {
+		return {
+			usuario: localStorage.getItem('email'),
+			isLoggedIn: localStorage.getItem('email') != null
+		}
+	}
 };
 </script>
 <style>
 /* CABEÇALHO */
-nav{
+nav {
 	position: sticky;
 	position: -webkit-sticky;
 	margin-left: -1%;
@@ -69,6 +63,11 @@ nav{
 	z-index: 100;
 	width: 100vw;
 }
+
+a.hidden {
+	display: none;
+}
+
 .navbar {
 	display: block;
 	padding: 0.5em 1em 0.5em 1em;
@@ -122,13 +121,16 @@ img.navbar-logo {
 .navbar-button {
 	display: none;
 }
+
 a {
-  color: #333333;
-  text-decoration: none;
+	color: #333333;
+	text-decoration: none;
 }
-router-link{
-  text-decoration: black;
+
+router-link {
+	text-decoration: black;
 }
+
 .navbar-link {
 	display: inline-block;
 	vertical-align: middle;
@@ -175,7 +177,7 @@ a .active {
 	right: 2%;
 	transform: translate3d(0, -1vh, 0);
 	background-color: #ffffff;
-	width: 15em;
+	width: 25em;
 	z-index: 101;
 	border: 2px solid #333333;
 	padding: 1em 0 1em 2em;
@@ -189,7 +191,7 @@ a .active {
 	opacity: 0.7;
 }
 
-.navbar-dropdown a,
+.navbar-dropdown a:not(.hidden),
 .navbar-user {
 	display: inline-block;
 	padding: 0;
@@ -200,15 +202,19 @@ a .active {
 	margin: 0;
 	padding-left: 5%;
 }
-@media (max-width: 600px) and (orientation: portrait){
-  /* CABEÇALHO */
+
+@media (max-width: 600px) and (orientation: portrait) {
+
+	/* CABEÇALHO */
 	header {
 		position: static;
-		
+
 	}
-	nav{
+
+	nav {
 		border-right: 5px solid white;
 	}
+
 	.navbar-wrap,
 	.navbar-menu {
 		flex-direction: column;

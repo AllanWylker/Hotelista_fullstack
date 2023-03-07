@@ -37,8 +37,6 @@ export default {
 			emailInput.value = emailInput.value.replaceAll(replaceRegex, "");
 			senhaInput.value = senhaInput.value.replaceAll(replaceRegex, "");
 
-			console.log(`Email: ${emailInput.value}  -  Senha: ${senhaInput.value}`);
-
 			if (senhaInput.value == "" || emailInput.value == "") {
 				falhaAviso.style.display = "block";
 				falhaAviso.style.opacity = 1;
@@ -204,8 +202,9 @@ select {
 	border: 1px solid #e0e0e0;
 	transition: 0.5s;
 }
-option{
-  font-size: 14px;
+
+option {
+	font-size: 14px;
 }
 
 textarea {
