@@ -36,6 +36,7 @@
           <td>              
             <a class="button" @click="deleteUsers(usuario.idUsuario)">Deletar</a>
           </td>
+          <td></td>
         </tr>
       </tbody>
     </table>
@@ -71,7 +72,7 @@ export default {
     
     async deleteUsers(id) {
       try {
-        await axios.delete(`http://localhost:5000/usuario/${id}`);
+        await axios.delete(`http://localhost:5000/usuario/user/${id}`);
         this.getUsers();
       } catch (err) {
         console.log(err);

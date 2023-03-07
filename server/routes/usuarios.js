@@ -1,22 +1,33 @@
 //import express
-import express from 'express';
+import express from "express";
 
 //import function do controller
-import { showUsers, showUsersById, createUsers, updateUsers, deleteUsuario } from '../controller/usuarios.js';
+import {
+  showTesteRole,
+  showUsers,
+  showUsersById,
+  createUsers,
+  updateUsers,
+  deleteUsuario,
+} from "../controller/usuarios.js";
 
 //express router
-const router = express.Router()
+const router = express.Router();
 
-router.get('/',(req,res)=>{
-    res.send('<h4>APIs</h4>')
-})
-router.get('/usuario', showUsers) //pegando
-router.get('/usuario/:id', showUsersById) //pegando
+router.get("/", (req, res) => {
+  res.send("<h4>APIs</h4>");
+});
+//mostra usuarios e hospedes
+router.get("/usuario", showUsers); //pegando
+//mostra usuarios e hospedes pelo id
+router.get("/usuario/user/:id", showUsersById); //pegando
+//cria usuario
+router.post("/usuario", createUsers); //pegando no postman
+//atualiza pelo id
+router.put("/usuario/user/:id", updateUsers); //pegando no postman
+//deleta pelo id
+router.delete("/usuario/user/:id", deleteUsuario); //pegando
+//mostra todos os hospedes
+router.get("/usuario/teste", showTesteRole);
 
-router.post('/usuario', createUsers) //pegando no postman
-
-router.put('/usuario/:id', updateUsers) //pegando no postman
-
-router.delete('/usuario/:id', deleteUsuario) //pegando
-
-export default router
+export default router;

@@ -1,5 +1,16 @@
 //import functions da models
-import { allUsers, usersById, insertUsers, modifyUser, deleteUsuarioById } from "../models/usuario.js"
+import { testeRole, allUsers, usersById, insertUsers, modifyUser, deleteUsuarioById, getLogin } from "../models/usuario.js"
+
+export const showTesteRole = (req,res)=>{
+    testeRole((erro,results)=>{
+        if(erro){
+            res.send(erro)
+        }else{
+            res.json(results)
+        }
+    })
+    
+}
 
 export const showUsers = (req,res) =>{
     allUsers((erro,results)=>{
@@ -62,6 +73,16 @@ export const updateUsers = (req,res)=>{
 export const deleteUsuario = (req, res) => {
     const id = req.params.id;
     deleteUsuarioById(id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+export const showLogin = (req, res) => {
+    const data = req.body
+    getLogin(data, (err, results) => {
         if (err){
             res.send(err);
         }else{

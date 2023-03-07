@@ -107,7 +107,7 @@ export default {
     // Get Usuario By Id
     async usersById(id) {
       try {
-        const response = axios.get(`http://localhost:5000/usuario/${id}`);
+        const response = axios.get(`http://localhost:5000/usuario/user/${id}`);
         this.nomeUsuario = (await response).data.nome;
         this.emailUsuario = (await response).data.email;
       } catch (err) {
@@ -119,7 +119,7 @@ export default {
     async updateUsers() {
       try {
         await axios.put(
-          `http://localhost:5000/usuario/${this.$route.query.id}`,
+          `http://localhost:5000/usuario/user/${this.$route.query.id}`,
           {
             nome: this.nomeUsuario,
             email: this.emailUsuario,
@@ -129,13 +129,13 @@ export default {
             endereco: this.enderecoUsuario,
           }
         );
-        this.nomeUsuario = "";
-        this.emailUsuario = "";
-        (this.senhaUsuario = ""),
-          (this.telefoneUsuario = ""),
-          (this.generoUsuario = ""),
-          (this.enderecoUsuario = "");
-        this.$router.push("/hospedesAdmin");
+        this.nomeUsuario = "",
+        this.emailUsuario = "",
+        this.senhaUsuario = "",
+        this.telefoneUsuario = "",
+        this.generoUsuario = "",
+        this.enderecoUsuario = "",
+        this.$router.push("/hospedesAdmin")
       } catch (err) {
         console.log(err);
       }
