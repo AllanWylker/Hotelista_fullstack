@@ -9,6 +9,7 @@ import {
   createUsers,
   updateUsers,
   deleteUsuario,
+  showLogin
 } from "../controller/usuarios.js";
 
 //express router
@@ -29,5 +30,7 @@ router.put("/usuario/user/:id", updateUsers); //pegando no postman
 router.delete("/usuario/user/:id", deleteUsuario); //pegando
 //mostra todos os hospedes
 router.get("/usuario/teste", showTesteRole);
+
+router.post("/usuarios/login", showLogin)
 
 export default router;

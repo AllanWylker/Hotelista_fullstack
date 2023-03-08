@@ -1,3 +1,6 @@
+import pkg from 'bcryptjs';
+const {genSaltSync, hashSync} = pkg;
+
 //import functions da models
 import { testeRole, allUsers, usersById, insertUsers, modifyUser, deleteUsuarioById, getLogin } from "../models/usuario.js"
 
@@ -34,32 +37,31 @@ export const showUsersById = (req,res)=>{
 
 export const createUsers = (req,res)=>{
     const data = req.body
-    insertUsers(data, (erro,results)=>{
+    const salt = genSaltSync(10)
+    data.senha = hashSync(data.senha, salt)
+    insertUsers(data, (erro,results) =>{
         if(erro){
-            res.send(erro)
+            console.log(erro)
+            return res.status(500).json({
+                success:0,
+                message: "Database connection error"
+            })
         }else{
-            res.json(results)
+            console.log(results)
+            return res.status(200).json({
+                success:1,
+                data: results
+            })
         }
     })
 }
-/*
-//Atualiza usuario
-export const updateUsers = (req,res)=>{
-    const nome = req.body.nome;
-    const email = req.params.email
-    modifyUser(nome, email, (erro,results)=>{
-        if(erro){
-            res.send(erro)
-        }else{
-            res.json(results)
-        }
-    })
 
-}
-*/
+//Atualiza usuario
 export const updateUsers = (req,res)=>{
     const data = req.body
     const id = req.params.id
+    const salt = genSaltSync(10)
+    data.senha = hashSync(data.senha, salt)
     modifyUser(data,id, (err,results)=>{
         if(err){
             res.send(err)

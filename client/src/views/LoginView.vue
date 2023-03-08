@@ -5,9 +5,9 @@
 			<form class="login" action="">
 				<h1>Faça seu login!</h1>
 				<label for="email">E-mail:</label>
-				<input v-model="ler.emailInput" name="email" id="email" placeholder="Seu e-mail" type="email" required />
+				<input v-model="emailInput" name="email" id="email" placeholder="Seu e-mail" type="email" required />
 				<label for="senha">Senha:</label>
-				<input v-model="ler.senhaInput" name="senha" id="senha" placeholder="Sua senha" type="password" required />
+				<input v-model="senhaInput" name="senha" id="senha" placeholder="Sua senha" type="password" required />
 				<p class="dadosInvalidos" id="dadosInvalidos">E-mail ou senha incorretos!</p>
 				<router-link to="/cadastro">Não possui conta?</router-link>
 				<button class="button" type="submit" id="submit" value="Confirmar" @click="validar($event), loginCripto()">
@@ -31,7 +31,7 @@ export default {
 	data(){
 		return{
 			usuarios:[],
-			ler: {
+			dados: {
 				emailInput:'',
 				senhaInput:''
 			}
@@ -88,24 +88,6 @@ export default {
 			localStorage.setItem('senha', senhaInput.value);
 
 			this.$router.push({ path: '/' });
-		},
-		async loginCripto(){
-			const userOnSystem = {
-				email: this.ler.emailInput,
-				senha: this.ler.senhaInput
-			}
-			await this.getUsers(this.ler.emailInput)
-			if(descriptografarSenha(this.ler.senhaInput, this.usuarios)){
-				localStorage.setItem('userLogin', JSON.stringify(this.ler.emailInput))
-				this.$route.push('/')
-			}else{
-				alert('Usuario não cadastrado.')
-				document.querySelector('#email').value = ''
-        		document.querySelector('#senha').value = '' 
-			}
-			console.log(`userOnSystem: email ${userOnSystem.email} senha: ${userOnSystem.senha}`)
-			console.log(`this.usuario: ${this.usuarios}`)
-
 		},
 		async getUsers() {
 			try {

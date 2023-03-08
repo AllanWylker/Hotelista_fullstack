@@ -45,7 +45,9 @@ export const usersById = (id, result) => {
     }
   );
 };
-export const insertUsers = (dados, result) => {
+
+//cria usuario
+export const insertUsers = (dados, callback) => {
   console.log("insertUsers", dados);
   const values = [
     dados.nome,
@@ -63,95 +65,13 @@ export const insertUsers = (dados, result) => {
     (erro, results) => {
       if (erro) {
         console.log(erro);
-        result(erro, null);
+        return callback(erro, null);
       } else {
-        result(null, results);
+        return callback(null, results);
       }
     }
   );
 };
-/*
-export const criptSenha =
-  (signupValidation,
-  (req, res) => {
-    bcrypt.hash(req.body.senha, 10, (err, hash) => {
-      if (err) {
-        return res.status(500).send({
-          msg: err,
-        });
-      } else {
-        // has hashed pw => add to database
-        conn.query(
-          `INSERT INTO Usuario (nome, email, senha) VALUES ('${
-            req.body.nome
-          }', ${conn.escape(req.body.email)}, ${conn.escape(hash)})`,
-          (err, result) => {
-            if (err) {
-              throw err;
-              return res.status(400).send({
-                msg: err,
-              });
-            }
-            return res.status(201).send({
-              msg: "The user has been registerd with us!",
-            });
-          }
-        );
-      }
-    });
-  });*/
-
-//insere usuario
-/*export const insertUsers = (req,res, data, result)=>{
-  conn.query(
-        "INSERT INTO `Usuario` SET `nome`=?, `email`=?, `senha`=?, `telefone`=?, `data_nascimento`=?, `nacionalidade`=?, `genero`=?, `endereco`=?"
-        ,[
-            data.nome, data.email, data.senha, data.telefone, 
-            data.data_nascimento, data.nacionalidade, data.genero, 
-            data.endereco
-        ], 
-        (erro,results)=>{
-        if (erro){
-            console.log(erro)
-            result(erro,null)
-        }else{
-            result(null,results)
-        }
-  })       
-}*/
-
-/**
-         // username is available
-            bcrypt.hash(req.body.senha, 10, (err, hash) => {
-              if (err) {
-                return res.status(500).send({
-                  msg: err,
-                });
-              } else {
-                // has hashed pw => add to database
-                conn.query(
-                  `INSERT INTO Usuario (nome, email, senha, telefone, data_nascimento,
-                    nacionalidade, genero, endereco) VALUES ('${
-                    req.body.nome
-                  }', ${conn.escape(hash)}`, 
-                  [data.email,data.telefone, 
-                  data.data_nascimento, data.nacionalidade, data.genero, 
-                  data.endereco],
-                  (err, result) => {
-                    if (err) {
-                      throw err;
-                      return res.status(400).send({
-                        msg: err,
-                      });
-                    }
-                    return res.status(201).send({
-                      msg: "The user has been registerd with us!",
-                    });
-                  }
-                );
-              }
-            });
-*/
 
 export const modifyUser = (data, id, result) => {
   console.log("Put Method Working");
@@ -191,18 +111,4 @@ export const deleteUsuarioById = (id, result) => {
       }
     }
   );
-};
-
-//login usuario
-export const getLogin = (email, senha, result) => {
-  conn.query("SELECT idUsuario, nome, role FROM Usuario WHERE email = ? and senha = ?",
-  [email, senha],
-  (err, results) => {
-    if (err) {
-      console.log(err);
-      result(err, null);
-    } else {
-      result(null, results);
-    }
-  });
 };

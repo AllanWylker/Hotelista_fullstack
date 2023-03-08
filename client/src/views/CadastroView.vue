@@ -137,7 +137,6 @@ export default {
           data_nascimento: this.data_nascimentoUsuario,
           nacionalidade:this.nacionalidadeUsuario,
           notificacaoUsuario: this.notificacao,
-       
         })
         this.nomeUsuario = "",
         this.emailUsuario = "",
