@@ -2,15 +2,15 @@
 	<html>
 	<main>
 		<section>
-			<form class="login" action="">
+			<form class="login" method="post">
 				<h1>Faça seu login!</h1>
 				<label for="email">E-mail:</label>
-				<input v-model="emailInput" name="email" id="email" placeholder="Seu e-mail" type="email" required />
+				<input v-model="emailLogin" name="email" id="email" placeholder="Seu e-mail" type="email" required />
 				<label for="senha">Senha:</label>
-				<input v-model="senhaInput" name="senha" id="senha" placeholder="Sua senha" type="password" required />
+				<input v-model="senhaLogin" name="senha" id="senha" placeholder="Sua senha" type="password" required />
 				<p class="dadosInvalidos" id="dadosInvalidos">E-mail ou senha incorretos!</p>
 				<router-link to="/cadastro">Não possui conta?</router-link>
-				<button class="button" type="submit" id="submit" value="Confirmar" @click="validar($event), loginCripto()">
+				<button class="button" type="submit" id="" value="Confirmar" @click="loginEntry()">
 					<div class="button-text">Confirmar</div>
 					<p class="button-arrow">→</p>
 				</button>
@@ -19,26 +19,39 @@
 			</form>
 		</section>
 	</main>
-
 	</html>
 </template>
 
 <script>
-import  descriptografarSenha  from '../assets/js/criptoSenha.js'
 import axios from 'axios';
+
 export default {
 	name: 'LoginView',
 	data(){
 		return{
-			usuarios:[],
-			dados: {
-				emailInput:'',
-				senhaInput:''
-			}
+			emailLogin:"",
+			senhaLogin:""
 		}
 	},
 	methods: {
-		validar(e) {
+		async loginEntry(res,req){
+			console.log(this.emailLogin, this.senhaLogin)
+			try {
+				axios.post("http://localhost:5000/usuario/login", 
+				{
+					emailLogin: this.email,
+					senhaLogin: this.senha
+				})
+				this.email,
+				this.senha
+
+				
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		
+		/*validar(e) {
 			e.preventDefault();
 
 			const falhaAviso = document.querySelector('#dadosInvalidos');
@@ -87,16 +100,10 @@ export default {
 			localStorage.setItem('email', emailInput.value);
 			localStorage.setItem('senha', senhaInput.value);
 
-			this.$router.push({ path: '/' });
-		},
-		async getUsers() {
-			try {
-				const response = await axios.get("http://localhost:5000/usuario");
-				this.usuarios = response.data.usuario.email
-			} catch (err) {
-				console.log(err);
-			}
-    	},
+			//this.$router.push({ path: '/' });
+		},*/
+		
+	
 	}
 };
 </script>

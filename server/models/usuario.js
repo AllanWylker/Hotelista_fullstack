@@ -1,10 +1,6 @@
 //importa a database
 import conn from "../config/database.js";
 
-//import pkg from "jsonwebtoken";
-//const { Jwt } = pkg;
-//import { signupValidation, loginValidation } from "../validation.js";
-
 export const testeRole = (result) => {
   conn.query(
     "SELECT email,senha FROM Usuario WHERE role='usuario'",
@@ -111,4 +107,18 @@ export const deleteUsuarioById = (id, result) => {
       }
     }
   );
+};
+
+//login usuario
+export const usersByEmail = (email, callback) => {
+  conn.query("SELECT * FROM Usuario WHERE email = ?",
+  [email],
+  (erro, results) => {
+    if (erro) {
+      console.log(erro);
+      callback(erro, null);
+    } else {
+      callback(null, results[0]);
+    }
+  });
 };

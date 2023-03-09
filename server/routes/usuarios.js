@@ -12,6 +12,8 @@ import {
   showLogin
 } from "../controller/usuarios.js";
 
+import { checkToken } from "../auth/token.validation.js";
+
 //express router
 const router = express.Router();
 
@@ -19,18 +21,26 @@ router.get("/", (req, res) => {
   res.send("<h4>APIs</h4>");
 });
 //mostra usuarios e hospedes
-router.get("/usuario", showUsers); //pegando
+router.get("/usuario", showUsers); 
+
 //mostra usuarios e hospedes pelo id
-router.get("/usuario/user/:id", showUsersById); //pegando
+router.get("/usuario/user/:id", checkToken, showUsersById); 
+
 //cria usuario
-router.post("/usuario", createUsers); //pegando no postman
+router.post("/usuario", checkToken, createUsers);
+
 //atualiza pelo id
-router.put("/usuario/user/:id", updateUsers); //pegando no postman
+router.put("/usuario/user/:id", checkToken, updateUsers);
+
 //deleta pelo id
-router.delete("/usuario/user/:id", deleteUsuario); //pegando
+router.delete("/usuario/user/:id", checkToken, deleteUsuario); 
+
 //mostra todos os hospedes
 router.get("/usuario/teste", showTesteRole);
 
-router.post("/usuarios/login", showLogin)
+
+router.post("/usuario/login", showLogin)
+
+
 
 export default router;

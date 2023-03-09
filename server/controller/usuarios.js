@@ -1,8 +1,10 @@
 import pkg from 'bcryptjs';
-const {genSaltSync, hashSync} = pkg;
+const {genSaltSync, hashSync, compareSync} = pkg;
+
+import jwt from 'jsonwebtoken'
 
 //import functions da models
-import { testeRole, allUsers, usersById, insertUsers, modifyUser, deleteUsuarioById, getLogin } from "../models/usuario.js"
+import { testeRole, allUsers, usersById, insertUsers, modifyUser, deleteUsuarioById, usersByEmail } from "../models/usuario.js"
 
 export const showTesteRole = (req,res)=>{
     testeRole((erro,results)=>{
@@ -84,11 +86,32 @@ export const deleteUsuario = (req, res) => {
 }
 export const showLogin = (req, res) => {
     const data = req.body
-    getLogin(data, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
+    usersByEmail(data.email, (erro, results) => {
+        if (erro){
+            console.log(erro);
+        }
+        if(!results){
+            return res.json({
+                success: 0,
+                data: "Invalid email or senha"
+            })
+        }
+        const result = compareSync(data.senha, results.senha)
+        if(result){
+            results.senha = undefined;
+            const jsontoken = jwt.sign({ result: results}, "qwe1234", {
+                expiresIn: "1d"
+            })
+            return res.json({
+                success:1,
+                message: "login successfully",
+                token: jsontoken
+            })
+        } else{
+            return res.json({
+                success: 0,
+                data: "Invalid email or senha"
+            })
         }
     });
 }

@@ -149,7 +149,7 @@ export default {
         (this.notificacaoUsuario=""),
     
         alert('Usuário cadastrado com sucesso!')
-        this.$router.push("/");
+        this.$router.push("/login");
       }
        catch (err) {
         console.log(err);
