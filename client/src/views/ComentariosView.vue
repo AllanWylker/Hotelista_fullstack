@@ -25,7 +25,7 @@ export default {
             imageQuartoSimples: imageQuartoSimples,
             imageQuartoMedio: imageQuartoMedio,
             imageQuartoLuxo: imageQuartoLuxo,
-            comentarios: this.carregarComentarios(),
+            comentarios: this.getAvaliacoes(),
         }
     },
     name: 'ComentariosView',
@@ -59,7 +59,21 @@ export default {
             }
 
             this.comentarios = this.carregarComentarios();
+        },
+
+        getAvaliacoes (){
+            axios.get('http://localhost:5000/avaliacoes').then (res => {
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
+
+        mounted (){
+            this.getAvaliacoes();
         }
+
     }
 }
 </script>
