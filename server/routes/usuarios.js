@@ -27,13 +27,13 @@ router.get("/usuario", showUsers);
 router.get("/usuario/user/:id", checkToken, showUsersById); 
 
 //cria usuario
-router.post("/usuario", checkToken, createUsers);
+router.post("/usuario", createUsers);
 
 //atualiza pelo id
 router.put("/usuario/user/:id", checkToken, updateUsers);
 
 //deleta pelo id
-router.delete("/usuario/user/:id", checkToken, deleteUsuario); 
+router.delete("/usuario/user/:id",  deleteUsuario); 
 
 //mostra todos os hospedes
 router.get("/usuario/teste", showTesteRole);

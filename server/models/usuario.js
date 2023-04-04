@@ -119,6 +119,7 @@ export const usersByEmail = (email, callback) => {
       callback(erro, null);
     } else {
       callback(null, results[0]);
+      console.log(results[0])
     }
   });
 };

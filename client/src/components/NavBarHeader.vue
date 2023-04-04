@@ -14,7 +14,7 @@
 								alt="Logotipo Hotelista - Página home" /></router-link>
 
 					</a>
-					<div class="navbar-menu-wrap">
+					<div class="navbar-menu-wrap menu">
 						<div class="navbar-menu">
 							<a class="navbar-link active"><router-link to="/">Home</router-link></a>
 							<a class="navbar-link"><router-link to="/reservas">Reserve já</router-link></a>
@@ -204,7 +204,9 @@ a .active {
 }
 
 @media (max-width: 600px) and (orientation: portrait) {
-
+	.menu{
+		display: none;
+	}
 	/* CABEÇALHO */
 	header {
 		position: static;

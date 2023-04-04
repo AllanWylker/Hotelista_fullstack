@@ -1,4 +1,4 @@
-import pkg from 'bcryptjs';
+import pkg from 'bcrypt';
 const {genSaltSync, hashSync, compareSync} = pkg;
 
 import jwt from 'jsonwebtoken'
@@ -85,8 +85,9 @@ export const deleteUsuario = (req, res) => {
     });
 }
 export const showLogin = (req, res) => {
-    const data = req.body
-    usersByEmail(data.email, (erro, results) => {
+    const { email, password } = req.body
+    //console.log(email,password)
+    usersByEmail(email, (erro, results) => {
         if (erro){
             console.log(erro);
         }
@@ -96,17 +97,22 @@ export const showLogin = (req, res) => {
                 data: "Invalid email or senha"
             })
         }
-        const result = compareSync(data.senha, results.senha)
+        const result = compareSync(password, results.senha)
+        //console.log(results.senha)
         if(result){
             results.senha = undefined;
             const jsontoken = jwt.sign({ result: results}, "qwe1234", {
                 expiresIn: "1d"
             })
-            return res.json({
+            console.log({
                 success:1,
                 message: "login successfully",
                 token: jsontoken
             })
+            
+            /*res.status(201).send({
+                message:'Login feito com sucesso'
+            })*/
         } else{
             return res.json({
                 success: 0,
