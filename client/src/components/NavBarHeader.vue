@@ -11,10 +11,8 @@
 				<div class="navbar-wrap">
 					<a class="navbar-logo">
 						<router-link to="/"><img class="navbar-logo" src="@/assets/logotipo/Hotelista_sem_fundo.png"
-								alt="Logotipo Hotelista - Página home" /></router-link>
-
-					</a>
-					<div class="navbar-menu-wrap">
+								alt="Logotipo Hotelista - Página home" /></router-link> </a>
+					<div class="navbar-menu-wrap" v-bind:class="{ navbarhidden: navbarHidden }">
 						<div class="navbar-menu">
 							<a class="navbar-link active"><router-link to="/">Home</router-link></a>
 							<a class="navbar-link"><router-link to="/reservas">Reserve já</router-link></a>
@@ -30,8 +28,12 @@
 									</a>
 								</div>
 							</i>
-
 						</div>
+					</div>
+					<div class="navbar-menu-button-wrap">
+						<span @click="$event => hideShowNavbar($event)" class="navbar-menu-button" v-html="getNavbarIcon()">
+
+						</span>
 					</div>
 				</div>
 			</div>
@@ -48,7 +50,16 @@ export default {
 	data: function () {
 		return {
 			usuario: localStorage.getItem('email'),
-			isLoggedIn: localStorage.getItem('email') != null
+			isLoggedIn: localStorage.getItem('email') != null,
+			navbarHidden: true
+		}
+	},
+	methods: {
+		hideShowNavbar() {
+			this.navbarHidden = !this.navbarHidden;
+		},
+		getNavbarIcon() {
+			return this.navbarHidden ? '&#xe5d2;' : '&#xe5ce;';
 		}
 	}
 };
@@ -203,9 +214,27 @@ a .active {
 	padding-left: 5%;
 }
 
+.navbar-menu-button-wrap {
+	display: none;
+}
+
 @media (max-width: 600px) and (orientation: portrait) {
 
-	/* CABEÇALHO */
+	.navbar-menu-button-wrap {
+		display: block;
+		margin: 1vh 0 0 0;
+	}
+
+	.navbar-menu-button {
+		font-size: 2em;
+		font-family: "Material Icons";
+		cursor: pointer;
+	}
+
+	.navbarhidden {
+		display: none;
+	}
+
 	header {
 		position: static;
 
@@ -245,6 +274,17 @@ a .active {
 		width: 15em;
 		border: 2px solid #333333;
 		padding: 1em 0 1em 2em;
+	}
+
+	.navbar-dropdown-wrap {
+		padding: 0;
+		margin: 0;
+		margin-top: 0.5em;
+		text-align: center;
+	}
+
+	.navbar-dropdown-button {
+		padding: 0;
 	}
 }
 </style>
