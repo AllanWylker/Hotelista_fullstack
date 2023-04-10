@@ -111,7 +111,9 @@ git branch -d <coloque aqui o nome da sua branch>
 ```
 <br>
 
-> Isso indica que o trabalho na branch foi concluído e impede você ou outras pessoas de usar branches antigas acidentalmente. :trumpet:
+> Isso impede você e outras pessoas de usarem branches antigas acidentalmente e indica que sua contribuição foi concluída!
+> 
+> Divirta-se! :smiley:
 
 <br><br>
 
@@ -125,10 +127,13 @@ git branch -d <coloque aqui o nome da sua branch>
 
 ## Integrantes da Coderize
 
-| :office: Grupo 4 | Membros |
-| --- | --- |
-|:computer: Allan Wylker <br> [Github](https://github.com/AllanWylker) | <img src="https://avatars.githubusercontent.com/u/71415076?v=4" width=25%>
-|:computer: Gabriel Ramalho <br> [Github](https://github.com/Moykhaile) | <img src="https://avatars.githubusercontent.com/u/39865742?v=4" width=25%>
-|:computer: Gabriel Verissimo <br> [Github](https://github.com/GabrielVerissimo92) | <img src="https://avatars.githubusercontent.com/u/113485406?v=4" width=25%>
-|:computer: Sylvia Xavier <br> [Github](https://github.com/sylviaxavier) | <img src="https://avatars.githubusercontent.com/u/104994331?v=4" width=25%>
-<br>
+| :office: Grupo 4 | Membros | Conecte-se |
+| --- | --- | --- |
+|:computer: Allan Wylker <br> [Github](https://github.com/AllanWylker) | <img src="https://avatars.githubusercontent.com/u/71415076?v=4" width=25%> |<a href="https://www.linkedin.com/in/allan-wylker" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+|:computer: Gabriel Ramalho <br> [Github](https://github.com/Moykhaile) | <img src="https://avatars.githubusercontent.com/u/39865742?v=4" width=25%> |<a href="https://www.linkedin.com/in/gabriel-ramalho-rodrigues-1a50a1169" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+|:computer: Gabriel Verissimo <br> [Github](https://github.com/GabrielVerissimo92) | <img src="https://avatars.githubusercontent.com/u/113485406?v=4" width=25%> |<a href="https://www.linkedin.com/in" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+|:computer: Sylvia Xavier <br> [Github](https://github.com/sylviaxavier) | <img src="https://avatars.githubusercontent.com/u/104994331?v=4" width=25%> |<a href="https://www.linkedin.com/in/sylvialeticiaxavier" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+
+ <br>
+ 
+## A Coderize agradece sua atenção! :grin:
