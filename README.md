@@ -21,6 +21,7 @@ Sistema Web de gerenciamento do Hotelista. Projeto em desenvolvimento, realizado
 :white_check_mark: JavaScript <br>
 :white_check_mark: Vue.js <br>
 :white_check_mark: Node.js <br>
+:white_check_mark: MySQL <br>
 :white_check_mark: Express <br>
 <br>
 
@@ -30,6 +31,12 @@ Clone o projeto.
 
 ```
 git clone https://github.com/sylviaxavier/Hotelista_fullstack.git
+```
+
+Entre no repositório.
+
+```
+cd Hotelista_fullstack
 ```
 
 Acesse a branch dev.
