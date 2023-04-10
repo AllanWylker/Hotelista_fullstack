@@ -25,7 +25,7 @@ Sistema Web de gerenciamento do Hotelista. Projeto em desenvolvimento, realizado
 :white_check_mark: Express <br>
 <br>
 
-## Para executar o projeto
+## Para executar o projeto:
 
 Clone o projeto.
 
@@ -132,7 +132,7 @@ git branch -d <coloque aqui o nome da sua branch>
 </div>
 <br><br>
 
-## Integrantes da Coderize
+## Integrantes da Coderize:
 
 | :office: Grupo 4 | Membros | Conecte-se |
 | --- | --- | --- |
