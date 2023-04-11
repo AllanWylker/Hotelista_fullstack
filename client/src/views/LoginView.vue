@@ -5,9 +5,9 @@
 			<form v-on:submit.prevent="loginEntry" class="login" method="post">
 				<h1>Faça seu login!</h1>
 				<label for="email">E-mail:</label>
-				<input v-model="email" name="email" id="email" placeholder="Seu e-mail" type="email" required />
+				<input v-model="emailLogin" name="email" id="email" placeholder="Seu e-mail" type="email" required />
 				<label for="senha">Senha:</label>
-				<input v-model="password" name="senha" id="senha" placeholder="Sua senha" type="password" required />
+				<input v-model="passwordLogin" name="senha" id="senha" placeholder="Sua senha" type="password" required />
 				<p class="dadosInvalidos" id="dadosInvalidos">E-mail ou senha incorretos!</p>
 				<router-link to="/cadastro">Não possui conta?</router-link>
 				<button class="button" id="" value="Confirmar">
@@ -29,58 +29,31 @@ export default {
 	name: 'LoginView',
 	data(){
 		return{
-			email:"",
-			password:""
+			emailLogin:"",
+			passwordLogin:""
 		}
 	},
 	methods: {
 		async loginEntry(){		
 				try {
-					axios.post("http://localhost:5000/usuario/login", 
+					await axios.post("http://localhost:5000/usuario/login", 
 					{
-						email: this.email,
-						password: '35215753'
+						email: this.emailLogin,
+						password: this.passwordLogin
+						//sucesso@mail.com 35215753pls
 				
 					})
-					this.email,
-					this.password
+					this.emailLogin="",
+					this.passwordLogin="",
 
-					if(this.password){
-						alert('login sucesso')
-						this.$router.push({ path: '/' })
-						
-					}else{
-						console.log(this.email, this.senha)
-						alert('tente novamente')
-					}
-				} catch (error) {
-					console.log(error)
+					alert('Login realizado com sucesso!')
+        			this.$router.push("/");
+				} 
+				catch (err) {
+					console.log(err)
+					alert('algo deu errado!')
 				}
 
-
-
-
-				/*axios.post("http://localhost:5000/usuario/login", 
-				{
-					email: this.email,
-					password: this.password
-			
-				})
-				.then( data =>{
-					if(data.data.status == "ok"){
-						console.log("tudo certo?")
-					}
-
-					//console.log(data)
-					//alert('Login realizado com sucesso')
-					//this.$router.push({ path: '/' })
-				})
-				.catch(function(error){
-					//alert('Senha ou email incorretos')
-					console.log(error)
-					
-				})*/
-			
 		}
 		
 		/*validar(e) {

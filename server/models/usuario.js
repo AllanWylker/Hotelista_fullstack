@@ -115,11 +115,11 @@ export const usersByEmail = (email, callback) => {
   [email],
   (erro, results) => {
     if (erro) {
-      console.log(erro);
+      //console.log(erro);
       callback(erro, null);
     } else {
       callback(null, results[0]);
-      console.log(results[0])
+      //console.log(results[0])
     }
   });
 };

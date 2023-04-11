@@ -50,7 +50,7 @@ export const createUsers = (req,res)=>{
             })
         }else{
             console.log(results)
-            return res.status(200).json({
+            return res.status(201).json({
                 success:1,
                 data: results
             })
@@ -73,6 +73,7 @@ export const updateUsers = (req,res)=>{
     })
 
 }
+
 // Deleta o usuario
 export const deleteUsuario = (req, res) => {
     const id = req.params.id;
@@ -84,21 +85,26 @@ export const deleteUsuario = (req, res) => {
         }
     });
 }
+
 export const showLogin = (req, res) => {
     const { email, password } = req.body
     //console.log(email,password)
     usersByEmail(email, (erro, results) => {
-        if (erro){
-            console.log(erro);
-        }
+        /*if(erro){
+            console.log(erro)
+            return res.status(500).json({
+                success:0,
+                message: "Database connection error"
+            })
+        }*/
         if(!results){
             return res.json({
                 success: 0,
-                data: "Invalid email or senha"
+                data: "Email ou senha inválido"
             })
         }
+        
         const result = compareSync(password, results.senha)
-        //console.log(results.senha)
         if(result){
             results.senha = undefined;
             const jsontoken = jwt.sign({ result: results}, "qwe1234", {
@@ -106,17 +112,23 @@ export const showLogin = (req, res) => {
             })
             console.log({
                 success:1,
-                message: "login successfully",
+                message: "login efetuado com sucesso",
                 token: jsontoken
             })
             
-            /*res.status(201).send({
-                message:'Login feito com sucesso'
-            })*/
+            res.status(200).send({
+                success: 1,
+                message:'Login efetuado com sucesso'
+            })
         } else{
-            return res.json({
+            return res.status(404).json({
                 success: 0,
-                data: "Invalid email or senha"
+                message:'erro',
+                data: "Email ou senha inválido"
+            }),
+            console.log({
+                success:0,
+                message: "login não efetuado",
             })
         }
     });

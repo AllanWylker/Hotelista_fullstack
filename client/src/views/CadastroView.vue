@@ -140,19 +140,20 @@ export default {
         })
         this.nomeUsuario = "",
         this.emailUsuario = "",
-        (this.senhaUsuario = ""),
-        (this.telefoneUsuario = ""),
-        (this.generoUsuario = ""),
-        (this.enderecoUsuario = ""),
-        (this.data_nascimentoUsuario=""),
-        (this.nacionalidadeUsuario=""),
-        (this.notificacaoUsuario=""),
+        this.senhaUsuario = "",
+        this.telefoneUsuario = "",
+        this.generoUsuario = "",
+        this.enderecoUsuario = "",
+        this.data_nascimentoUsuario="",
+        this.nacionalidadeUsuario="",
+        this.notificacaoUsuario="",
     
         alert('Usuário cadastrado com sucesso!')
         this.$router.push("/login");
       }
        catch (err) {
         console.log(err);
+        alert('Ocorreu um erro!')
       
       }
     } 
