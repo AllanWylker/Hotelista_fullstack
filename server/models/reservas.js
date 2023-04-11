@@ -60,7 +60,7 @@ export const modelModifyReserva = (data, id, result) => {
 }
 
 export const modelDeleteReserva = (id, result) => {
-    conn.query("DELETE FROM Reservas WHERE idReserva = ?", [id],
+    conn.query("DELETE FROM Reservas WHERE idReservas = ?", [id],
     (erro, results) => {
         if(erro) {
             console.log(erro)
