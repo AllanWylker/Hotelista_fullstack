@@ -36,7 +36,7 @@ export default {
 	methods: {
 		async loginEntry(){		
 				try {
-					await axios.post("http://localhost:5000/usuario/login", 
+					const response = await axios.post("http://localhost:5000/usuario/login", 
 					{
 						email: this.emailLogin,
 						password: this.passwordLogin
@@ -45,6 +45,8 @@ export default {
 					})
 					this.emailLogin="",
 					this.passwordLogin="",
+
+					localStorage.setItem('token', response.data.token)
 
 					alert('Login realizado com sucesso!')
         			this.$router.push("/");

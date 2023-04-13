@@ -98,7 +98,7 @@ export default {
   name: "HomeView",
   components: {
     NavBarHeader,
-  },
+  }
 };
 </script>
 <style>

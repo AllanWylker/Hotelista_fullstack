@@ -90,13 +90,6 @@ export const showLogin = (req, res) => {
     const { email, password } = req.body
     //console.log(email,password)
     usersByEmail(email, (erro, results) => {
-        /*if(erro){
-            console.log(erro)
-            return res.status(500).json({
-                success:0,
-                message: "Database connection error"
-            })
-        }*/
         if(!results){
             return res.json({
                 success: 0,
@@ -112,13 +105,17 @@ export const showLogin = (req, res) => {
             })
             console.log({
                 success:1,
-                message: "login efetuado com sucesso",
-                token: jsontoken
+                message: "Login efetuado com sucesso",
+                token: jsontoken,
+                Usuario: results.nome
             })
             
-            res.status(200).send({
+            res.status(200).json({
                 success: 1,
-                message:'Login efetuado com sucesso'
+                message:'Login efetuado com sucesso',
+                token: jsontoken,
+                Usuario: results.nome
+                
             })
         } else{
             return res.status(404).json({

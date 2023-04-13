@@ -1,6 +1,5 @@
 <template>
 	<html>
-
 	<head>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -22,9 +21,13 @@
 							<i class="navbar-dropdown-wrap">
 								<p class="navbar-dropdown-button">&#xe853;</p>
 								<div class="navbar-dropdown">
-									<p class="navbar-user">Olá, {{ usuario != null ? usuario : "usuário" }}!</p>
+
+									<!--<p class="navbar-user" v-if="Usuario"> Olá, {{ Usuario.nome }}</p>
+									<p class="navbar-user" v-if="!Usuario"> Você não está logado.</p>-->
+
 									<a class="navbar-link">
-										<router-link to="/login" :class="{ hidden: isLoggedIn }">Login</router-link>
+										<!--<router-link to="/login" :class="{ hidden: isLoggedIn }">Login</router-link>-->
+										<router-link to="/login">Login</router-link>
 									</a>
 								</div>
 							</i>
@@ -32,7 +35,6 @@
 					</div>
 					<div class="navbar-menu-button-wrap">
 						<span @click="$event => hideShowNavbar($event)" class="navbar-menu-button" v-html="getNavbarIcon()">
-
 						</span>
 					</div>
 				</div>
@@ -45,13 +47,15 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
 	name: "NavBarHeader",
 	data: function () {
 		return {
-			usuario: localStorage.getItem('email'),
-			isLoggedIn: localStorage.getItem('email') != null,
-			navbarHidden: true
+			//usuario: localStorage.getItem('email'),
+			//isLoggedIn: localStorage.getItem('email') != null,
+			navbarHidden: true,
+			Usuario: null
 		}
 	},
 	methods: {
@@ -61,6 +65,10 @@ export default {
 		getNavbarIcon() {
 			return this.navbarHidden ? '&#xe5d2;' : '&#xe5ce;';
 		}
+	},
+	async created(){
+		const response = await axios.get("http://localhost:5000/usuario")
+		this.Usuario = response.nome
 	}
 };
 </script>
