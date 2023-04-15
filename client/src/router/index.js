@@ -28,6 +28,11 @@ const routes = [
     component: () => import('../views/ContatoView.vue')
   },
   {
+    path: '/minhasreservas',
+    name: 'MinhasReservasView',
+    component: () => import( '../views/MinhasReservasView.vue')
+  },
+  {
     path: '/login',
     name: 'LoginView',
     component: () => import('../views/LoginView.vue')

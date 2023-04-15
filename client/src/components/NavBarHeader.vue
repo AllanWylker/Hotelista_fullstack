@@ -18,6 +18,7 @@
 							<a class="navbar-link"><router-link to="/acomodacoes">Nossas Acomodações</router-link></a>
 							<a class="navbar-link"><router-link to="/contato">Contato</router-link></a>
 							<a class="navbar-link"><router-link to="/sobre">Sobre</router-link></a>
+							<a class="navbar-link" id="MinhasReservas" style="display: none"><router-link to="/minhasreservas">Minhas Reservas</router-link></a>
 							<i class="navbar-dropdown-wrap">
 								<p class="navbar-dropdown-button">&#xe853;</p>
 								<div class="navbar-dropdown">
