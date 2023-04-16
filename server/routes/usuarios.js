@@ -24,13 +24,13 @@ router.get("/", (req, res) => {
 router.get("/usuario", showUsers); 
 
 //mostra usuarios e hospedes pelo id
-router.get("/usuario/user/:id", checkToken, showUsersById); 
+router.get("/usuario/user/:id", showUsersById); 
 
 //cria usuario
 router.post("/usuario", createUsers);
 
 //atualiza pelo id
-router.put("/usuario/user/:id", checkToken, updateUsers);
+router.put("/usuario/user/:id", updateUsers);
 
 //deleta pelo id
 router.delete("/usuario/user/:id",  deleteUsuario); 

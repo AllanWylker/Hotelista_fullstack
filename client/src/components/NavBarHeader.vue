@@ -22,13 +22,12 @@
 							<i class="navbar-dropdown-wrap">
 								<p class="navbar-dropdown-button">&#xe853;</p>
 								<div class="navbar-dropdown">
-
-									<!--<p class="navbar-user" v-if="Usuario"> Olá, {{ Usuario.nome }}</p>
-									<p class="navbar-user" v-if="!Usuario"> Você não está logado.</p>-->
-
+									<!--<p class="navbar-user" v-if="usuario"> Olá, {{ usuario.nome }}</p>
+									<p class="navbar-user" v-if="!usuario"> Você não está logado.</p>-->
+									<p class="navbar-user">Olá, {{ usuario != null ? usuario : "usuário" }}!</p>
 									<a class="navbar-link">
-										<!--<router-link to="/login" :class="{ hidden: isLoggedIn }">Login</router-link>-->
-										<router-link to="/login">Login</router-link>
+										<router-link to="/login" :class="{ hidden: isLoggedIn }">Login</router-link>
+										<!--<router-link to="/login">Login</router-link>-->
 									</a>
 								</div>
 							</i>
@@ -53,10 +52,11 @@ export default {
 	name: "NavBarHeader",
 	data: function () {
 		return {
-			//usuario: localStorage.getItem('email'),
-			//isLoggedIn: localStorage.getItem('email') != null,
+			usuario: localStorage.getItem('emailUser'),
+			isLoggedIn: localStorage.getItem('emailUser') != null,
+
 			navbarHidden: true,
-			Usuario: null
+			usuario: null
 		}
 	},
 	methods: {

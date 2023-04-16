@@ -49,6 +49,11 @@ export default {
 					localStorage.setItem('token', response.data.token)
 
 					alert('Login realizado com sucesso!')
+					
+					
+					const email = document.querySelector('#email');
+					localStorage.setItem('emailUser', email.value);
+
         			this.$router.push("/");
 				} 
 				catch (err) {
@@ -64,6 +69,7 @@ export default {
 			const falhaAviso = document.querySelector('#dadosInvalidos');
 			const senhaInput = document.querySelector('#senha');
 			const emailInput = document.querySelector('#email');
+			localStorage.setItem('email', emailInput.value);
 
 			const replaceRegex = /[\s\n'"]/gi;
 			emailInput.value = emailInput.value.replaceAll(replaceRegex, "");

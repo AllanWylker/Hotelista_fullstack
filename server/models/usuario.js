@@ -72,12 +72,10 @@ export const insertUsers = (dados, callback) => {
 export const modifyUser = (data, id, result) => {
   console.log("Put Method Working");
   conn.query(
-    "UPDATE `Usuario` SET `nome`=?, `email`=?, `senha`=?, `telefone`=?, `genero`=?, `endereco`=? WHERE `idUsuario`=?",
+    "UPDATE `Usuario` SET `nome`=?, `email`=?, `genero`=?, `endereco`=? WHERE `idUsuario`=?",
     [
       data.nome,
       data.email,
-      data.senha,
-      data.telefone,
       data.genero,
       data.endereco,
       id,

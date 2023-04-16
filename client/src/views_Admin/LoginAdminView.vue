@@ -161,7 +161,7 @@ export default {
 				emailInput.style.backgroundColor = 'white';
 			}
 
-			let senhaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$/;
+			/*let senhaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$/;
 			if (!senhaRegex.test(codigoInput.value)) {
 				falhaAviso.style.display = "block";
 				falhaAviso.style.opacity = 1;
@@ -173,7 +173,7 @@ export default {
 				falhaAviso.style.display = "none";
 				falhaAviso.style.opacity = 0;
 				codigoInput.style.backgroundColor = 'white';
-			}
+			}*/
 
 			let ferias = feriasS.checked;
 			let afastamento = afastamentoS.checked;

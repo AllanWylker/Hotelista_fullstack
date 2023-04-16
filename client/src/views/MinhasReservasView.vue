@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card_content">
 
-                    <p id="quartoResumo" class="card_title">Acomodação: </p>
+                    <p id="quarto" class="card_title">Acomodação: </p>
                     <p id="checkinResumo" class="card_text">Data do Check-in: </p>
                     <p id="checkoutResumo" class="card_text">Data de Check-out: </p>
                     <p id="pessoasResumo" class="card_text">Número de hóspedes: </p>
@@ -46,59 +46,25 @@ export default {
         let dia = (data.slice(6, 8))
         return `${dia}/${mes}/${ano}`
       },
-      ResumoMinhasReservas() {
+      onChangeCheckin(){
+        document.querySelector('#checkinResumo').textContent = this.pegarData(localStorage.getItem("checkin"))
         
-        let subtotal = parseFloat(localStorage.getItem('valorServiço: '))
-            subtotal += parseFloat(localStorage.getItem('Total'))
-
-        document.querySelector("#totalResumo").textContent =
-            "Valor Total da Reserva: " + this.formatarDinheiro(subtotal)
-
-        document.querySelector("#quartoResumo").textContent =
-            localStorage.getItem("nomeQuarto");
-       
-        document.querySelector("#checkinResumo").textContent =
-            "Data do Check-in: " + this.pegarData(localStorage.getItem("checkin"));
-
-        document.querySelector("#checkoutResumo").textContent =
-            "Data do Check-out: " + this.pegarData(localStorage.getItem("checkout"));
-            
-            
-        document.querySelector("#pessoasResumo").textContent =
-            "Número de hóspedes: " + localStorage.getItem("qtdePessoas");
-
-        document.querySelector("#servicos").textContent = 
-            "Serviços Adicionais: "
-
-        document.querySelector("#servicos0").textContent = 
-            localStorage.getItem("servicoNome0")
-
-        document.querySelector("#servicos1").textContent = 
-            localStorage.getItem("servicoNome1")
-
-        document.querySelector("#servicos2").textContent = 
-            localStorage.getItem("servicoNome2")
-
-        document.querySelector("#servicos3").textContent = 
-            localStorage.getItem("servicoNome3")
-            
-        document.querySelector("#servicos4").textContent = 
-            localStorage.getItem("servicoNome4")
-    },/*
-	    getdata() {
-		    document.querySelector('#quarto').textContent = "Quarto: " + localStorage.getItem('nomeQuarto');
-
-		    document.querySelector('#checkin').textContent = "Data do Check-in: " + this.pegarData(localStorage.getItem('checkin'));
+      },
+      getdata() {
+		    let este = document.querySelector('#quarto').textContent = "Quarto: " + localStorage.getItem("nomeQuarto");
+        console.log(este + "")
+		    .textContent = "Data do Check-in: " + this.pegarData(localStorage.getItem('checkin'));
 
         document.querySelector('#checkout').textContent = "Data do Check-out: " + this.pegarData(localStorage.getItem('checkout'));
 
 		    document.querySelector('#pessoasModalResumo').textContent = "Número de hóspedes: " + localStorage.getItem('qtdePessoas')
            
         document.querySelector('#totalReserva').textContent = "Valor total da reserva:" + localStorage.getItem('totalReserva');
-	    }*/
+	      console.log(this.onChangeCheckin)
     }
+    
+  }
 }
-
 
 </script>
 

@@ -26,9 +26,10 @@
           </div>
         </div>
         <div class="button-wrap">
-          <a class="button button-home" href="#Serviços">
-            <div class="button-text">Conheça mais sobre nossos serviços</div>
-            <p class="button-arrow">→</p>
+          <a class="button button-home">
+            <router-link to="/acomodacoes">
+              <div class="button-text">Conheça mais sobre nossos serviços</div>
+            </router-link><p class="button-arrow">→</p>
           </a>
         </div>
       </section>
@@ -102,9 +103,6 @@ export default {
 };
 </script>
 <style>
-body {
-  overflow-x: hidden;
-}
 .footer-title {
   text-align: center;
   margin-top: 3em;

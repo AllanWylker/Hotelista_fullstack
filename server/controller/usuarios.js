@@ -62,8 +62,6 @@ export const createUsers = (req,res)=>{
 export const updateUsers = (req,res)=>{
     const data = req.body
     const id = req.params.id
-    const salt = genSaltSync(10)
-    data.senha = hashSync(data.senha, salt)
     modifyUser(data,id, (err,results)=>{
         if(err){
             res.send(err)

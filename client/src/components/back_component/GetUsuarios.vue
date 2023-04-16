@@ -7,8 +7,6 @@
           <th>Nome</th>
           <th>Email</th>
           <th>Gênero</th>
-          <th>Role</th>
-          <th>Telefone</th>
           <th>Endereço</th>
           <th></th>
           <th></th>
@@ -20,8 +18,6 @@
           <td>{{ usuario.nome }}</td>
           <td>{{ usuario.email }}</td>
           <td>{{ usuario.genero }}</td>
-          <td>{{ usuario.role }}</td>
-          <td>{{ usuario.telefone }}</td>
           <td>{{ usuario.endereco }}</td>
           <td>
             <router-link

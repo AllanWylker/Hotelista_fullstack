@@ -19,7 +19,7 @@
             />
           </div>
         </div>
-        <div>
+        <!--<div>
           <label>Usuário Senha:</label>
           <div>
             <input type="text" placeholder="Sua senha" v-model="senhaUsuario" />
@@ -34,7 +34,7 @@
               v-model="telefoneUsuario"
             />
           </div>
-        </div>
+        </div>-->
         <div>
           <label>Usuário Gênero:</label>
           <div>
@@ -94,8 +94,8 @@ export default {
     return {
       nomeUsuario: "",
       emailUsuario: "",
-      senhaUsuario: "",
-      telefoneUsuario: "",
+      //senhaUsuario: "",
+      //telefoneUsuario: "",
       generoUsuario: "",
       enderecoUsuario: "",
     };
@@ -123,16 +123,16 @@ export default {
           {
             nome: this.nomeUsuario,
             email: this.emailUsuario,
-            senha: this.senhaUsuario,
-            telefone: this.telefoneUsuario,
+            //senha: this.senhaUsuario,
+            //telefone: this.telefoneUsuario,
             genero: this.generoUsuario,
             endereco: this.enderecoUsuario,
           }
         );
         this.nomeUsuario = "",
         this.emailUsuario = "",
-        this.senhaUsuario = "",
-        this.telefoneUsuario = "",
+        //this.senhaUsuario = "",
+        //this.telefoneUsuario = "",
         this.generoUsuario = "",
         this.enderecoUsuario = "",
         this.$router.push("/hospedesAdmin")
